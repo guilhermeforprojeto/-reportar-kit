@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal de demonstração</title>
+  <link rel="stylesheet" href="/demo.css">
+  <script type="module" src="/reportar/assets/widget.js"></script>
+</head>
+<body>
+  <header><div class="wrap"><strong>Portal de demonstração</strong></div></header>
+  <main class="wrap">
+    <h1>Meus pedidos</h1>
+    <p>Dados fictícios para experimentar o Reportar Kit dentro de uma plataforma.</p>
+    <section aria-labelledby="orders">
+      <h2 id="orders">Pedidos recentes</h2>
+      <ul>
+        <li><strong>#1042</strong><span>Material de escritório</span><span>Em preparação</span></li>
+        <li><strong>#1038</strong><span>Kit de organização</span><span>Entregue</span></li>
+      </ul>
+    </section>
+    <section aria-labelledby="session" data-reportar-private>
+      <h2 id="session">Sessão de teste</h2>
+      <form method="post" action="/demo/session">
+        <button type="submit" name="role" value="customer">Entrar como cliente</button>
+        <button type="submit" name="role" value="support">Entrar como equipe</button>
+      </form>
+      <nav aria-label="Ferramentas da demonstração">
+        <a href="/reportar/admin">Painel de relatos</a>
+        <a href="/demo/mailbox">Caixa de e-mails de teste</a>
+      </nav>
+    </section>
+  </main>
+  <reportar-widget page="/pedidos" version="demo"></reportar-widget>
+</body>
+</html>

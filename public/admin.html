@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de relatos</title>
+  <link rel="stylesheet" href="./assets/admin.css">
+  <script type="module" src="./assets/admin.js"></script>
+</head>
+<body>
+  <header class="masthead"><div class="wrap"><h1>Painel de relatos</h1></div></header>
+  <main class="wrap workspace">
+    <section class="inbox" aria-labelledby="list-heading">
+      <div class="toolbar">
+        <h2 id="list-heading">Fila</h2>
+        <label>Situação
+          <select id="filter">
+            <option value="PENDING">Pendentes</option>
+            <option value="ALL">Todos</option>
+            <option value="OPEN">Abertos</option>
+            <option value="IN_PROGRESS">Em andamento</option>
+            <option value="DONE">Resolvidos</option>
+            <option value="WONT_FIX">Arquivados</option>
+          </select>
+        </label>
+        <button type="button" id="reload">Atualizar</button>
+      </div>
+      <p id="queue-status" class="queue-status" role="status">Carregando a fila…</p>
+      <ul id="queue" aria-label="Relatos"></ul>
+      <button type="button" id="more" hidden>Carregar mais</button>
+    </section>
+    <section class="detail" aria-labelledby="detail-heading">
+      <p id="detail-status" role="status">Selecione um relato para ver os detalhes.</p>
+      <article id="report" hidden>
+        <div class="report-head">
+          <h2 id="detail-heading" tabindex="-1"></h2>
+          <span id="badge"></span>
+        </div>
+        <p id="meta" class="muted"></p>
+        <p id="message" class="message"></p>
+        <figure id="figure" hidden>
+          <a id="capture-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura em nova aba"></a>
+          <figcaption>Captura anexada</figcaption>
+        </figure>
+        <details id="technical"><summary>Contexto técnico</summary><pre id="context"></pre></details>
+        <form id="edit">
+          <h3>Tratamento</h3>
+          <label>Situação
+            <select name="status" required>
+              <option value="OPEN">Aberto</option>
+              <option value="IN_PROGRESS">Em andamento</option>
+              <option value="DONE">Resolvido</option>
+              <option value="WONT_FIX">Arquivado</option>
+            </select>
+          </label>
+          <label id="reply-field" hidden>Resposta enviada ao autor
+            <textarea name="reply" rows="4" maxlength="5000" minlength="3"></textarea>
+          </label>
+          <label>Notas internas<textarea name="notes" rows="3" maxlength="10000"></textarea></label>
+          <button type="submit" id="save" class="primary">Salvar alterações</button>
+        </form>
+        <section class="notifications" aria-labelledby="mail-heading">
+          <h3 id="mail-heading">E-mails ao autor</h3>
+          <ul id="mail"></ul>
+          <button type="button" id="refresh-mail">Atualizar entregas</button>
+        </section>
+        <a id="export" download>Baixar relato em JSON</a>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
